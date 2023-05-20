@@ -1,0 +1,2 @@
+npm install react-dice-complete
+npm uninstall react-dice-complete

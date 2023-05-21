@@ -1,0 +1,138 @@
+* {
+    color: #3e3e3e;
+}
+
+// Navigation
+nav {
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+    position: fixed;
+    z-index: 99;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, .75);
+
+    .centered {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 1200px;
+        height: 72px;
+        margin: 0px auto;
+
+        h1 {
+            font-size: 20px;
+        }
+    }
+}
+
+// Home Page & Dice Page
+.home-page {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1.title {
+        margin-top: 100px;
+    }
+
+    .dices {
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        width: 800px;
+        height: 500px;
+        margin: 24px 0;
+
+        border-radius: 12px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, .25);
+    }
+
+    h1.info, h1.info-greater {
+        margin: 24px 0 28px 0;
+    }
+
+    .dice-result, .result-greater {
+        display: grid;
+        gap: 24px;
+        width: 1200px;
+        margin-bottom: 100px;
+    
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+// Dice
+.dice-page {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button {
+        font-size: 18px;
+        width: 256px;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 8px;
+        margin: 12px;
+        background-color: #ddd;
+        transition: .2s;
+        cursor: pointer;
+    }
+
+    button:hover {
+        color: #fff;
+        background-color: #3e3e3e;
+    }
+
+    h1 {
+        padding: 12px;
+    }
+
+    .advanced {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        input {
+            font-size: 18px;
+            padding: 12px;
+            height: 32px;
+            width: 156px;
+            margin: 12px;
+            outline: none;
+            border: 1px solid #1f1f1f;
+            border-radius: 4px;
+        }
+    }
+}
+
+.display-result {
+    display: grid;
+    grid-area: 
+        'urutan'
+        'peluang';
+    width: 240px;
+    height: 120px;
+    align-items: center;
+    justify-items: center;
+
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .25);
+
+    h1 {
+        font-size: 24px;
+    }
+}

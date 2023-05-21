@@ -1,2 +1,8 @@
 npm install react-dice-complete
 npm uninstall react-dice-complete
+
+npm install sass --save-dev
+npm uninstall sass --save-dev
+
+npm install @tanstack/react-query
+npm uninstall @tanstack/react-query

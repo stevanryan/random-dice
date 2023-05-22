@@ -6,3 +6,6 @@ npm uninstall sass --save-dev
 
 npm install @tanstack/react-query
 npm uninstall @tanstack/react-query
+
+npm install react-router-dom
+npm uninstall react-router-dom

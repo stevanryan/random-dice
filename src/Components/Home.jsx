@@ -1,12 +1,21 @@
-import { useContext } from 'react';
+import { useContext } from 'react'
 import '../Styles/All.scss'
 
 import Dice from './Dice';
-import DisplayResult from './DisplayResult';
-import { DiceLogicContext } from './DiceContext';
+import DisplayResult from './DisplayResult'
+import { DiceLogicContext } from './DiceContext'
 
 const Home = () => {
-  const { result, show, foundGreater } = useContext(DiceLogicContext)
+  const { result, show, handleReset } = useContext(DiceLogicContext)
+
+  const isFound = result.find((data) => {
+    if (data !== null) {
+      if (data.totalValue > 7) {
+        return true
+      }
+    }
+    return false
+  })
 
   return (
     <div className='home-page'>
@@ -29,7 +38,7 @@ const Home = () => {
       <h1 className='info-greater'>Dadu muncul lebih dari 7</h1>
       <div className="result-greater">
         {show && result.map((data) => {
-          if (data !== null && data.totalValue > 7) {
+          if (data.totalValue > 7) {
             return(
               // key to prevent error of duplicating.
               <DisplayResult key={data.order} data={data}/>
@@ -37,7 +46,7 @@ const Home = () => {
           } return null
         })}
         {!show && <h3>Tidak ada! Silakan melempar dadu dahulu!</h3>}
-        {show && !foundGreater && <h3>Lebih dari dari 7 tidak ditemukan!</h3>}
+        {show && !isFound && <h3>Lebih dari dari 7 tidak ditemukan!</h3>}
       </div>
     </div>
   );

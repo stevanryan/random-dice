@@ -5,7 +5,7 @@ import ReactDice from 'react-dice-complete'
 import { DiceLogicContext } from './DiceContext'
 
 const Dice = () => {
-  const { result, setResult, show, setShow } = useContext(DiceLogicContext)
+  const { result, setResult, show, setShow, handleReset } = useContext(DiceLogicContext)
 
   const reactDice = useRef(null)
 
@@ -13,13 +13,14 @@ const Dice = () => {
 
   const rollDone = (totalValue) => {
     if (!show) {
-      setResult([...result, null])
       return
     }
-    const diceObject = {order: result.length, totalValue: totalValue}
+    const diceObject = {order: result.length + 1, totalValue: totalValue}
     setNumber(totalValue)
     setResult([...result, diceObject])
   }
+
+  let timeoutId
 
   const rollAll = (amount) => {
     if (amount <= 1) {
@@ -28,13 +29,17 @@ const Dice = () => {
     }
 
     reactDice.current?.rollAll()
-    setTimeout(() => {
+    timeoutId = setTimeout(() => {
       rollAll(amount - 1)
     }, 250);
   }
 
   const handleManyRoll = (amount) => {
     rollAll(amount)
+  }
+
+  const handleStop = () => {
+    clearTimeout(timeoutId)
   }
 
   const [changeText, setChangeText] = useState('');
@@ -67,6 +72,10 @@ const Dice = () => {
       </div>
       <p>Jumlah angka pada dadu : </p>
       <h1>{number}</h1>
+      <div className="feature">
+        <button className='reset' onClick={() => handleReset(result)}>Reset</button>
+        <button className='reset' onClick={handleStop}>Stop</button>   
+      </div>
     </div>
   );
 }

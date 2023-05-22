@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, createContext } from 'react';
+import { useState, createContext } from 'react'
 
 export const DiceLogicContext = createContext(null)
 
@@ -12,20 +12,25 @@ const DiceContext = (props) => {
 
   const [show, setShow] = useState(false)
 
-  const [foundGreater, setFoundGreater] = useState(false)
+  const handleReset = (diceData) => {
+    // const reseted = result.filter((data) => data.order !== diceData.order)
+    // setResultGreater(reseted)
+    for (let index = 0; index < result.length; index++) {
+      result.pop()
+    }
+  }
 
   const myFunction = {
     result,
     setResult,
     show,
     setShow,
-    foundGreater,
-    setFoundGreater,
     resultGreater,
     setResultGreater,
 
     // totalGreater,
     // setTotalGreater
+    handleReset
   }
 
   return (

@@ -6,31 +6,29 @@ export const DiceLogicContext = createContext(null)
 const DiceContext = (props) => {
   const [result, setResult] = useState([])
 
-  const [resultGreater, setResultGreater] = useState([])
+  const [greater, setGreater] = useState([])
 
-  // const [totalGreater, setTotalGreater] = useState(0)
+  const [calculateData, setCalculateData] = useState([])
 
   const [show, setShow] = useState(false)
 
-  const handleReset = (diceData) => {
-    // const reseted = result.filter((data) => data.order !== diceData.order)
-    // setResultGreater(reseted)
-    for (let index = 0; index < result.length; index++) {
-      result.pop()
-    }
-  }
+  const [urutan, setUrutan] = useState(1)
 
   const myFunction = {
     result,
     setResult,
+    
     show,
     setShow,
-    resultGreater,
-    setResultGreater,
 
-    // totalGreater,
-    // setTotalGreater
-    handleReset
+    greater,
+    setGreater,
+
+    calculateData,
+    setCalculateData,
+
+    urutan,
+    setUrutan
   }
 
   return (

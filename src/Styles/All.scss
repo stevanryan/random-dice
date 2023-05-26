@@ -140,3 +140,65 @@ nav {
         font-size: 24px;
     }
 }
+
+// All Result
+.all-result {
+    margin: 12px 0 12px 0;
+    font-size: 18px;
+    display: grid;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-template-areas:
+        'title title title title'
+        'line1 line1 line1 line1'
+        'urutan jumlah muncul persentase'
+        'line2 line2 line2 line2';
+    width: 1000px;
+        
+    h2 {
+        margin-bottom: 24px;
+        align-self: center;
+        justify-self: center;
+        grid-area: title;
+    }
+        
+    #urutan, #jumlah, #muncul, #persentase, #h3-1, #h3-2, #h3-3, #h3-4  {
+        align-self: center;
+        justify-self: center;
+        margin: 8px 0 8px 0;
+    }
+
+    #urutan {
+        grid-area: urutan;
+    }
+
+    #jumlah {
+        grid-area: jumlah;
+    }
+
+    #muncul {
+        grid-area: muncul;
+    }
+
+    #persentase {
+        grid-area: persentase;
+    }
+
+    margin-bottom: 200px;
+
+    h2 {
+        margin-bottom: 18px;
+    }
+
+    hr {
+        width: 1000px;
+    }
+
+    #hr1 {
+        grid-area: line1;
+    }
+
+    #hr2 {
+        grid-area: line2;
+    }
+}

@@ -12,12 +12,14 @@ const DiceContext = (props) => {
 
   const [show, setShow] = useState(false)
 
-  const [urutan, setUrutan] = useState(1)
+  const [openData, setOpenData] = useState(true)
+
+  const [urutan, setUrutan] = useState(0)
 
   const myFunction = {
     result,
     setResult,
-    
+
     show,
     setShow,
 
@@ -28,7 +30,10 @@ const DiceContext = (props) => {
     setCalculateData,
 
     urutan,
-    setUrutan
+    setUrutan,
+
+    openData,
+    setOpenData
   }
 
   return (

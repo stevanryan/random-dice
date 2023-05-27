@@ -21,8 +21,6 @@ const Dice = () => {
 
   const [number, setNumber] = useState()
 
-  // const [clicked, setClicked] = useState(false)
-
   const rollDone = (totalValue) => {
     if (!show) {
       return
@@ -40,15 +38,11 @@ const Dice = () => {
       reactDice.current?.rollAll()
       return
     }
-
-    // await disableButton()
     
     reactDice.current?.rollAll()
     setTimeout(() => {
       rollAll(amount - 1)
     }, 250);
-
-    
   }
 
   const handleManyRoll = (amount) => {
@@ -60,35 +54,34 @@ const Dice = () => {
     setChangeText(e.target.value)
   }
 
-  const handleCalculateData = () => {
-    // setClicked(true)
+  const [disable, setDisable] = useState(false)
+  const [showReset, setShowReset] = useState(false)
 
-    // console.log(clicked)
-    // if (clicked) {
-    //   return
-    // }
+  const handleCalculateData = async () => {
+    // const time = (changeText * 250) + 500
+    setDisable(true)
+    // await new Promise(resolve => setTimeout(resolve, time))
+    await handleDisable()
+    setDisable(false)
+    setShowReset(true)
+
     urutan === 0 && setUrutan(urutan + 1)
     setCalculateData([...calculateData, {diceRolled: result.length, greaterCount: greater.length}])
   }
 
+  const handleDisable = () => {
+    const time = (changeText * 250) + 500
+    return new Promise(resolve => setTimeout(resolve, time))
+  }
+  
   const handleReset = () => {
-    // setClicked(!clicked)
+    setShowReset(false)
     setUrutan(urutan + 1)
     const reseted = result.filter((data) => data.totalValue < 0)
     setResult(reseted)
     setGreater(reseted)
   }
-
-  // const [disable, setDisable] = useState(false)
-
-  // const disableButton = async () => {
-  //   setDisable(!disable)
-  //   console.log(!disable)
-  //   await new Promise(resolve => setTimeout(resolve, 2000))
-  //   setDisable(!disable)
-  //   console.log(!disable)
-  // }
-
+  
   return (
     <div className='dice-page'>
       <ReactDice
@@ -107,16 +100,27 @@ const Dice = () => {
       <button onClick={() => { rollAll(1); !show && setShow(true) }}>Lempar Dadu!</button>
       <div className="advanced">
         <p>Advanced:</p>
-        <input type="number" min={0} onChange={handleInput} />
-        {changeText > 0 && <button disabled={false} onClick={() => { handleManyRoll(changeText); !show && setShow(true); handleCalculateData()}}>Lempar Dadu {changeText} kali!</button>}
+        <input type="number" min={1} onChange={handleInput} />
+        {changeText > 0 && 
+          <button 
+            disabled={disable}
+            onClick={() => { 
+                handleManyRoll(changeText); !show && setShow(true); handleCalculateData()
+              }
+            }>{disable ? 'Still running': `Lempar Dadu ${changeText} kali!`}
+          </button>}
         {changeText < 1 && <h4 style={{marginBottom: '18px'}}>Isi jumlah lemparan pada kotak di atas sesesuai keinginan</h4>}
-        {changeText === 0 && <h1 style={{marginBottom: '18px'}}>Minimal engga 0 lah ya</h1>}
       </div>
       <p>Jumlah angka pada dadu : </p>
       <h1>{number}</h1>
-      <div className="feature">
-        <button className='reset' onClick={handleReset}>Reset</button>
-      </div>
+      {showReset && show && result.length !== 0 && <div className="feature">
+        <button 
+          className='reset'
+          disabled={disable || result.length === 0}
+          onClick={handleReset}
+          >{disable ? 'Still running' : 'Reset' }
+        </button>
+      </div>}
     </div>
   );
 }

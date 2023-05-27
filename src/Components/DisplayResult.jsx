@@ -4,8 +4,8 @@ const DisplayResult = ({ data }) => {
   return (
     <div className="display-result">
       <h1>Lemparan ke-{order}</h1>
-      <p>Peluang dadu :</p>
-      <h2>{totalValue}/36</h2>
+      <p>Jumlah dua dadu :</p>
+      <h2>{totalValue}</h2>
     </div>
   );
 }

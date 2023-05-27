@@ -15,8 +15,7 @@ const Dice = () => {
     calculateData,
     setCalculateData,
     urutan,
-    setUrutan,
-    setOpenData } = useContext(DiceLogicContext)
+    setUrutan } = useContext(DiceLogicContext)
 
   const reactDice = useRef(null)
 
@@ -62,7 +61,6 @@ const Dice = () => {
   }
 
   const handleCalculateData = () => {
-    // setOpenData(false)
     // setClicked(true)
 
     // console.log(clicked)
@@ -110,7 +108,7 @@ const Dice = () => {
       <div className="advanced">
         <p>Advanced:</p>
         <input type="number" min={0} onChange={handleInput} />
-        {changeText > 0 && <button disabled={false``} onClick={() => { handleManyRoll(changeText); !show && setShow(true); handleCalculateData()}}>Lempar Dadu {changeText} kali!</button>}
+        {changeText > 0 && <button disabled={false} onClick={() => { handleManyRoll(changeText); !show && setShow(true); handleCalculateData()}}>Lempar Dadu {changeText} kali!</button>}
         {changeText < 1 && <h4 style={{marginBottom: '18px'}}>Isi jumlah lemparan pada kotak di atas sesesuai keinginan</h4>}
         {changeText === 0 && <h1 style={{marginBottom: '18px'}}>Minimal engga 0 lah ya</h1>}
       </div>

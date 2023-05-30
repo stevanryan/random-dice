@@ -16,6 +16,8 @@ const DiceContext = (props) => {
 
   const [urutan, setUrutan] = useState(0)
 
+  const [average, setAverage] = useState(0)
+
   const myFunction = {
     result,
     setResult,
@@ -33,7 +35,10 @@ const DiceContext = (props) => {
     setUrutan,
 
     openData,
-    setOpenData
+    setOpenData,
+
+    average,
+    setAverage
   }
 
   return (

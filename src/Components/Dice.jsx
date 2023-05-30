@@ -15,7 +15,9 @@ const Dice = () => {
     calculateData,
     setCalculateData,
     urutan,
-    setUrutan } = useContext(DiceLogicContext)
+    setUrutan,
+    average,
+    setAverage } = useContext(DiceLogicContext)
 
   const reactDice = useRef(null)
 
@@ -33,7 +35,7 @@ const Dice = () => {
     }
   }
 
-  const rollAll = async (amount) => {
+  const rollAll = (amount) => {
     if (amount <= 1) {
       reactDice.current?.rollAll()
       return
@@ -58,15 +60,11 @@ const Dice = () => {
   const [showReset, setShowReset] = useState(false)
 
   const handleCalculateData = async () => {
-    // const time = (changeText * 250) + 500
+    urutan === 0 && setUrutan(urutan + 1)
     setDisable(true)
-    // await new Promise(resolve => setTimeout(resolve, time))
     await handleDisable()
     setDisable(false)
     setShowReset(true)
-
-    urutan === 0 && setUrutan(urutan + 1)
-    setCalculateData([...calculateData, {diceRolled: result.length, greaterCount: greater.length}])
   }
 
   const handleDisable = () => {
@@ -75,8 +73,11 @@ const Dice = () => {
   }
   
   const handleReset = () => {
+    setShow(false)
     setShowReset(false)
     setUrutan(urutan + 1)
+    setCalculateData([...calculateData, {diceRolled: result.length, greaterCount: greater.length}])
+    setAverage(average + (greater.length / result.length) * 100)
     const reseted = result.filter((data) => data.totalValue < 0)
     setResult(reseted)
     setGreater(reseted)

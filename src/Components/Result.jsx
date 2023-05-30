@@ -4,10 +4,10 @@ import '../Styles/All.scss'
 import { DiceLogicContext } from './DiceContext'
 
 const Result = () => {
-  const { result, greater, urutan } = useContext(DiceLogicContext)
+  const { result, greater, urutan, average } = useContext(DiceLogicContext)
 
   const showPercentage = (greater.length / result.length) * 100
-  
+
   return(
     <div className="all-result">
       <h2>Data Hasil Uji Coba</h2>
@@ -21,6 +21,11 @@ const Result = () => {
       <p id='persentase'>Persentase Peluang</p>
       <h3 id='h3-4'>{isNaN(showPercentage) ? '0' : showPercentage.toFixed(2)}%</h3>
       <hr id='hr2'/>
+      <h2 id='average'>Rata-Rata Persentase</h2>
+      <h3 id='h3-5'>
+        {average === 0 ? 'Average : 0%'
+          : `Average: ${(average / (urutan - 1)).toFixed(2)}%`}
+      </h3>
     </div>
   )
 }

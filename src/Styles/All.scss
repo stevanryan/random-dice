@@ -25,6 +25,11 @@ nav {
         h1 {
             font-size: 20px;
         }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
     }
 }
 
@@ -88,9 +93,17 @@ nav {
         background-color: #ddd;
         transition: .2s;
         cursor: pointer;
+
+        // &: is applied when button disabled equals to true.
+        &:disabled {
+            color: #fff;
+            background-color: #ec3131;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .75);
+            cursor: not-allowed;
+        }
     }
 
-    button:hover {
+    button:hover:enabled {
         color: #fff;
         background-color: #3e3e3e;
     }
@@ -124,20 +137,23 @@ nav {
 }
 
 .display-result {
-    display: grid;
-    grid-area: 
-        'urutan'
-        'peluang';
-    width: 240px;
-    height: 120px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 110px;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 
     border-radius: 12px;
     box-shadow: 0 0 6px rgba(0, 0, 0, .25);
 
     h1 {
-        font-size: 24px;
+        font-size: 20px;
+        margin: -8px 0 12px 0;
+    }
+
+    h2 {
+        margin: 4px 0 -12px 0;
     }
 }
 
@@ -152,7 +168,10 @@ nav {
         'title title title title'
         'line1 line1 line1 line1'
         'urutan jumlah muncul persentase'
-        'line2 line2 line2 line2';
+        'line2 line2 line2 line2'
+        'h3-1 h3-2 h3-3 h3-4'
+        'average average average average'
+        'h3-5 h3-5 h3-5 h3-5';
     width: 1000px;
         
     h2 {
@@ -200,5 +219,32 @@ nav {
 
     #hr2 {
         grid-area: line2;
+    }
+
+    #h3-1 {
+        grid-area: h3-1;
+    }
+
+    #h3-2 {
+        grid-area: h3-2;
+    }
+
+    #h3-3 {
+        grid-area: h3-3;
+    }
+
+    #h3-4 {
+        grid-area: h3-4;
+    }
+
+    h2#average {
+        margin: 48px 0 8px 0;
+        grid-area: average;
+    }
+
+    #h3-5 {
+        align-self: center;
+        justify-self: center;
+        grid-area: h3-5;
     }
 }
